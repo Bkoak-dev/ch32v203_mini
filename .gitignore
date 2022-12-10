@@ -17,9 +17,3 @@
 # Top-level generic files
 #
 build/*
-
-#
-# Generated include files
-#
-include/config/*
-include/generated/*
