@@ -1,0 +1,90 @@
+#!/bin/bash
+
+set -e
+
+###############################################################################
+# Set you own environment here
+###############################################################################
+arch=$2
+soc=qingke
+
+###############################################################################
+# function define
+###############################################################################
+mk_cfg()
+{
+        echo soc = $soc
+        echo arch = $arch
+        if [[ $arch == "v3" ]]
+        then
+                echo make config by using defconfig: qingke_v3_defconfig
+                cfg=${soc}_${arch}_defconfig
+        else
+                echo "ERROR: Invalid argument for arch!"
+                exit
+        fi
+        make $cfg
+}
+
+mk_menucfg()
+{
+        mk_cfg
+        make menuconfig
+}
+
+mk_all()
+{
+        echo "make all"
+        make all
+}
+
+mk_clean()
+{
+        echo "make clean"
+        make clean
+}
+
+helper()
+{
+        echo "---------------------------------------------------------------------"
+        echo "Usage:  "
+        echo "  sh build.sh [option]"
+        echo "    option:"
+        echo "    -m [arch]: make menuconfig by specified defconfig"
+        echo "	     supports:"
+        echo "         v3: qingke_v3_defconfig"
+        echo "    -c: make clean command"
+        echo "    -h: helper prompt"
+        echo "---------------------------------------------------------------------"
+}
+
+###############################################################################
+# main logic from here
+###############################################################################
+while getopts "mpcdolgah" opt; do
+        case $opt in
+                m)
+                        if [ -n "$arch" ]
+                        then
+                                mk_menucfg
+                        else
+                                echo "ERROR: No specific deconfig found! Please enter which arch you want to make."
+                                exit
+                        fi
+                        exit
+                        ;;
+                c)
+                        mk_clean
+                        exit
+                        ;;
+                h)
+                        helper
+                        exit
+                        ;;
+                \?)
+                        echo "Invalid option: -$OPTARG" >&2
+                        ;;
+                esac
+done
+
+mk_all

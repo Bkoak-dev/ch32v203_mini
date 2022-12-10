@@ -1,0 +1,23 @@
+mainmenu "ch32v103_mini main menu"
+
+menu "Compile Information"
+
+        config CROSS_COMPILE
+                string "Compiler"
+                default "riscv-none-embed-"
+                help
+                        Specifies the corss compiler
+
+        config LINK_FILE
+                string "Linker Script"
+                default "script.ld"
+                help
+                        Specifies the link file
+
+        config IMG_NAME
+                string "Output"
+                default "ch32v103_mini"
+                help
+                        Specifies the output image name
+
+endmenu	# Compile Info
