@@ -4,9 +4,21 @@ menu "Compile Information"
 
         config CROSS_COMPILE
                 string "Compiler"
-                default "riscv-none-embed-"
+                default "riscv-none-embed"
                 help
                         Specifies the corss compiler
+
+        config CFLAGS
+                string "CFLAGS"
+                default ""
+                help
+                        Specifies the Compile parameters
+
+        config LDFLAGS
+                string "LDFLAGS"
+                default ""
+                help
+                        Specifies the Compiler Collection parameters
 
         config LINK_FILE
                 string "Linker Script"
@@ -16,7 +28,7 @@ menu "Compile Information"
 
         config IMG_NAME
                 string "Output"
-                default "ch32v103_mini"
+                default "temp"
                 help
                         Specifies the output image name
 

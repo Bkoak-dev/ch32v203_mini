@@ -53,6 +53,9 @@ helper()
         echo "    -m [arch]: make menuconfig by specified defconfig"
         echo "	     supports:"
         echo "         v3: qingke_v3_defconfig"
+        echo "    -p [arch]: make specified defconfig"
+	echo "       supports:"
+	echo "         v3: qingke_v3_defconfig"
         echo "    -c: make clean command"
         echo "    -h: helper prompt"
         echo "---------------------------------------------------------------------"
@@ -67,6 +70,16 @@ while getopts "mpcdolgah" opt; do
                         if [ -n "$arch" ]
                         then
                                 mk_menucfg
+                        else
+                                echo "ERROR: No specific deconfig found! Please enter which arch you want to make."
+                                exit
+                        fi
+                        exit
+                        ;;
+                p)
+                        if [ -n "$arch" ]
+                        then
+                                mk_cfg
                         else
                                 echo "ERROR: No specific deconfig found! Please enter which arch you want to make."
                                 exit
