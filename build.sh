@@ -6,7 +6,7 @@ set -e
 # Set you own environment here
 ###############################################################################
 arch=$2
-soc=qingke
+soc=ch32v103
 
 ###############################################################################
 # function define
@@ -15,7 +15,7 @@ mk_cfg()
 {
         echo soc = $soc
         echo arch = $arch
-        if [[ $arch == "v3" ]]
+        if [[ $arch == "mini" ]]
         then
                 echo make config by using defconfig: qingke_v3_defconfig
                 cfg=${soc}_${arch}_defconfig
@@ -52,10 +52,10 @@ helper()
         echo "    option:"
         echo "    -m [arch]: make menuconfig by specified defconfig"
         echo "	     supports:"
-        echo "         v3: qingke_v3_defconfig"
+        echo "         v3: ch32v103_mini_defconfig"
         echo "    -p [arch]: make specified defconfig"
 	echo "       supports:"
-	echo "         v3: qingke_v3_defconfig"
+	echo "         v3: ch32v103_mini_defconfig"
         echo "    -c: make clean command"
         echo "    -h: helper prompt"
         echo "---------------------------------------------------------------------"
