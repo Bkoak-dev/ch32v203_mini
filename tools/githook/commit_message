@@ -1,0 +1,54 @@
+#<type>(<scope>): <subject>
+
+
+#<body>
+Summary:
+
+#<arc diff>
+Signed-off-by name <name@example.com>
+
+Test Plan: none
+
+Reviewers:
+
+#--------------------------------------------------------------------------#
+#
+#	Please fill in the first line after annotation in the relevant format.
+#	For details, please refer to the following
+#
+#---------------------------------- type ----------------------------------#
+#
+#	chore:	  other modification, such as makefile/tools/scripts...
+#	docs:	  everything related to documention (including annotation)
+#	feat:	  add/delete new feature to a particular application
+# 	fix:	  fix a bug
+#	refactor: refactor a specific section of the codebase/rename a file
+#	style:	  feature and updates related to styling
+#	perf:	  improve performance
+#	test:	  modify temporary test file (such as .json)
+#
+#--------------------------------- scope ----------------------------------#
+#
+#	describe the impacting scope of this commit
+#	module name/subsys name/allsys/defcfg/base/dts..is optioned for reference
+#
+#--------------------------------- subject --------------------------------#
+#
+#	describe the purpose of this commit
+#	start with verb (such as 'change'), 50-character line
+#	The first letter must be capitalized
+#	If this commit is cross repository, please add (xrepo) at the end
+#
+#---------------------------------- body ----------------------------------#
+#
+#	72-character wrapped(notnecessary), Chinese is recommended to be used.
+#	This should answer:
+#	* Why was this change necessary?
+#
+#	* How does it address the problem?
+#
+#	* Are there any side effects?
+#	If this commit include any jira/wiki links, please add it to the body
+#
+#-------------------------------------------------------------------------#
+

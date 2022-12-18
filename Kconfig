@@ -1,4 +1,4 @@
-mainmenu "ch32v103_mini main menu"
+mainmenu "ch32v203_mini main menu"
 
 menu "Compile Information"
 

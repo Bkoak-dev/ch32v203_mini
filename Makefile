@@ -11,7 +11,7 @@ else
         $(warning oh dear, please make defconfig first.)
 endif
 
-CPU          ?=ch32v103
+CPU          ?=ch32v203
 BOARD        ?=mini
 
 sub-dir      := ld
@@ -67,12 +67,12 @@ compile:
 	@echo "#ifndef COMPILE_H_" > $(GENERATED_DIR)/compile.h
 	@echo "#define COMPILE_H_" >> $(GENERATED_DIR)/compile.h
 	@echo "" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINIMINI_COMMIT_ID   \"$(REPO_REV)\"" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINI_BUILD_UTS   \"$(COMPILE_TIME)\"" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINI_BUILD_HOST  \"$(COMPILE_HOST)\"" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINI_PATCH_ID    \"$(COMPILE_DIFF)\"" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINI_BOARD_TYPE  \"$(BOARD)\"" >> $(GENERATED_DIR)/compile.h
-	@echo "#define CH32V103_MINI_LD_FILE     \"$(CONFIG_LINK_FILE)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINIMINI_COMMIT_ID   \"$(REPO_REV)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINI_BUILD_UTS   \"$(COMPILE_TIME)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINI_BUILD_HOST  \"$(COMPILE_HOST)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINI_PATCH_ID    \"$(COMPILE_DIFF)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINI_BOARD_TYPE  \"$(BOARD)\"" >> $(GENERATED_DIR)/compile.h
+	@echo "#define CH32V203_MINI_LD_FILE     \"$(CONFIG_LINK_FILE)\"" >> $(GENERATED_DIR)/compile.h
 	@echo "" >> $(GENERATED_DIR)/compile.h
 	@echo "#endif // COMPILE_H_" >> $(GENERATED_DIR)/compile.h
 

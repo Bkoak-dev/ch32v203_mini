@@ -6,7 +6,7 @@ set -e
 # Set you own environment here
 ###############################################################################
 arch=$2
-soc=ch32v103
+soc=ch32v203
 
 ###############################################################################
 # function define
@@ -17,7 +17,7 @@ mk_cfg()
         echo arch = $arch
         if [[ $arch == "mini" ]]
         then
-                echo make config by using defconfig: qingke_v3_defconfig
+                echo make config by using defconfig: ch32v203_mini_defconfig
                 cfg=${soc}_${arch}_defconfig
         else
                 echo "ERROR: Invalid argument for arch!"
@@ -52,10 +52,10 @@ helper()
         echo "    option:"
         echo "    -m [arch]: make menuconfig by specified defconfig"
         echo "	     supports:"
-        echo "         v3: ch32v103_mini_defconfig"
+        echo "         v3: ch32v203_mini_defconfig"
         echo "    -p [arch]: make specified defconfig"
 	echo "       supports:"
-	echo "         v3: ch32v103_mini_defconfig"
+	echo "         v3: ch32v203_mini_defconfig"
         echo "    -c: make clean command"
         echo "    -h: helper prompt"
         echo "---------------------------------------------------------------------"

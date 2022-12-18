@@ -1,0 +1,13 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# bare metal main menu
+#
+
+#
+# Compile Information
+#
+CONFIG_CROSS_COMPILE="riscv-none-embed"
+CONFIG_CFLAGS=""
+CONFIG_LDFLAGS=""
+CONFIG_LINK_FILE="ch32v203_base.ld"
+CONFIG_IMG_NAME="ch32v203_mini"
