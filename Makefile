@@ -54,7 +54,7 @@ LD_OBJS      := $(patsubst %.ld.S, %.ld, $(LD_FILES))
 OBJ_FILES    := $(C_OBJS) $(S_OBJS)
 
 ###############################################################################################
-.phony: compile menuconfig help clean
+.phony: all compile menuconfig help clean
 
 all:  compile $(OBJ_FILES) $(LD_OBJS)
 	@echo Linking $@
@@ -105,9 +105,15 @@ help:
 	@echo '  xxx_defconfig   - Create autoconf.h .config according to Kconfig'
 	@echo '  menuconfig      - Configuration interface based on text menu'
 	@echo '  clean           - Clear compilation intermediate files'
+	@echo '  git-hoolk       - Generate local hook and msg template'
 	@echo 'Execute "make" or "make all" to build all targets marked with [*] '
 	@echo 'For further info see the README.md file'
 
 clean:
 	$(MAKE)  -C $(KCONFIG_DIR) clean
 	rm -rf $(OBJ_DIR)
+
+git-hook:
+	@echo Generate local hook...
+	tools/githook/git-set-up.sh
+	@echo done
