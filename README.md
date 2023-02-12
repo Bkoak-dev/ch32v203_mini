@@ -10,6 +10,13 @@
 1. Download [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications).
 2. Download [WCH沁恒 ch32v203相关文档](https://www.wch.cn/search?q=ch32v203&t=downloads)
 
-## **Compilation environment**
+## **Compilation environment & Commit message config**
 1. Download [Toolchain and debug tools](http://www.mounriver.com/download). The compilation toolchain and OpenOCD tools are downloaded from **_MounRiver Studio_**.
-2. 
+2. Run [tools/toolchain/toolchain_cfg.sh](./tools/toolchain/toolchain_cfg.sh)
+3. If you submit code for the first time, run [tools/githook/git_msg_set.sh](./tools/githook/git_msg_set.sh). Otherwise, skip this step.
+4. Run [./build.sh -m mini](./build.sh), create default congfig file.
+5. Run [./build.sh](./build.sh), complete compilation.
+
+## **OpenOCD Debug & Download program**
+1. Run [./build.sh -d](./build.sh), Download image & Verify image.
+1. Run [./build.sh -e](./build.sh), Erase flash.

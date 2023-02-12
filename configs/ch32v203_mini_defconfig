@@ -1,18 +1,49 @@
 #
+# @copyright   Copyright (C) 2022 Horizon Robotics Inc.
+#
 # Automatically generated file; DO NOT EDIT.
-# bare metal main menu
+# ch32v203_mini main menu
 #
 
 #
 # Compile Information
 #
 CONFIG_CROSS_COMPILE="riscv-none-embed"
-CONFIG_CFLAGS=""
-CONFIG_LDFLAGS=""
+CONFIG_CFLAGS="-c -march=rv32imac -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized -g -std=gnu99"
+CONFIG_LDFLAGS="-march=rv32imac -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized -g -nostartfiles -Xlinker --gc-sections"
 CONFIG_LINK_FILE="ch32v20x_D6.ld"
 CONFIG_IMG_NAME="ch32v203_mini"
 
 #
-# Arch
+# Core
 #
 CONFIG_V20X_D6=y
+CONFIG_DEBUG_UART=y
+CONFIG_DEBUG_UART1=y
+# CONFIG_DEBUG_UART2 is not set
+# CONFIG_DEBUG_UART3 is not set
+CONFIG_DB_BAUDRATE=115200
+
+#
+# Peripheral
+#
+# CONFIG_V20X_ADC is not set
+# CONFIG_V20X_BPK is not set
+# CONFIG_V20X_CAN is not set
+# CONFIG_V20X_CRC is not set
+# CONFIG_V20X_DBGMCU is not set
+# CONFIG_V20X_DMA is not set
+# CONFIG_V20X_EXIT is not set
+# CONFIG_V20X_FLASH is not set
+CONFIG_V20X_GPIO=y
+# CONFIG_V20X_I2C is not set
+# CONFIG_V20X_IWDG is not set
+CONFIG_V20X_MISC=y
+# CONFIG_V20X_OPA is not set
+# CONFIG_V20X_PWR is not set
+CONFIG_V20X_RCC=y
+# CONFIG_V20X_RTC is not set
+# CONFIG_V20X_SPI is not set
+# CONFIG_V20X_TIM is not set
+CONFIG_V20X_USART=y
+# CONFIG_V20X_WWDG is not set

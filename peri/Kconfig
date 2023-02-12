@@ -1,0 +1,123 @@
+menu "Peripheral"
+
+        config V20X_ADC
+        bool "20x adc"
+        default n
+        help
+                compile ch32v20x_adc file
+
+        config V20X_BPK
+        bool "20x bpk"
+        default n
+        help
+                compile ch32v20x_bpk file
+
+        config V20X_CAN
+        bool "20x can"
+        default n
+        help
+                compile ch32v20x_can file
+
+        config V20X_CRC
+        bool "20x crc"
+        default n
+        help
+                compile ch32v20x_crc file
+
+        config V20X_DBGMCU
+        bool "20x dbgmcu"
+        default n
+        help
+                compile ch32v20x_dbgmcu file
+
+        config V20X_DMA
+        bool "20x dma"
+        default n
+        help
+                compile ch32v20x_dma file
+
+        config V20X_EXIT
+        bool "20x exit"
+        default n
+        help
+                compile ch32v20x_exit file
+
+        config V20X_FLASH
+        bool "20x flash "
+        default n
+        help
+                compile ch32v20x_flash file
+
+        config V20X_GPIO
+        bool "20x gpio"
+        default y
+        help
+                compile ch32v20x_gpio file
+
+        config V20X_I2C
+        bool "20x i2c"
+        default n
+        help
+                compile ch32v20x_i2c file
+
+        config V20X_IWDG
+        bool "20x iwdg"
+        default n
+        help
+                compile ch32v20x_iwdg file
+
+        config V20X_MISC
+        bool "20x misc"
+        default y
+        help
+                compile ch32v20x_misc file
+
+        config V20X_OPA
+        bool "20x opa"
+        default n
+        help
+                compile ch32v20x_opa file
+
+        config V20X_PWR
+        bool "20x pwr"
+        default n
+        help
+                compile ch32v20x_pwr file
+
+        config V20X_RCC
+        bool "20x rcc"
+        default y
+        help
+                compile ch32v20x_rcc file
+
+        config V20X_RTC
+        bool "20x rtc"
+        default n
+        help
+                compile ch32v20x_rtc file
+
+        config V20X_SPI
+        bool "20x spi"
+        default n
+        help
+                compile ch32v20x_spi file
+
+        config V20X_TIM
+        bool "20x tim"
+        default n
+        help
+                compile ch32v20x_tim file
+
+        config V20X_USART
+        bool "20x usart"
+        default y
+        help
+                compile ch32v20x_usart file
+
+        config V20X_WWDG
+        bool "20x wwdg"
+        default n
+        help
+                compile ch32v20x_wwdg file
+
+endmenu

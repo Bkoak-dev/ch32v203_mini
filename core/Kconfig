@@ -1,0 +1,37 @@
+menu "Core"
+
+        config V20X_D6
+                bool "V20X_D6"
+
+        config DEBUG_UART
+                bool "Debug Uart"
+                default y
+                help
+                        Select debug uart
+
+        choice
+                prompt "DB_UART_N"
+                depends on DEBUG_UART
+                default DEBUG_UART1
+                help
+                        Debug uart num
+
+                config DEBUG_UART1
+                        bool "DEBUG_UART1"
+
+                config DEBUG_UART2
+                        bool "DEBUG_UART2"
+
+                config DEBUG_UART3
+                        bool "DEBUG_UART3"
+
+        endchoice
+
+        config DB_BAUDRATE
+                int "Default baudrate"
+                depends on DEBUG_UART
+                default 115200
+                help
+                        Select a default baudrate, you can set a bigger value i.e. 5000000.
+
+endmenu # Core

@@ -14,7 +14,7 @@ endif
 CPU          ?=ch32v203
 BOARD        ?=mini
 
-sub-dir      := ld
+sub-dir      := core peri user ld
 sub-makefile := $(foreach dir,$(sub-dir),$(dir)/Makefile)
 include $(sub-makefile)
 
@@ -41,7 +41,7 @@ COMPILE_HOST := $(shell whoami | sed 's/\\/\\\\/')@$(shell hostname)
 COMPILE_TIME := $(shell date -R)
 COMPILE_DIFF := $(shell mkdir -p $(OBJ_DIR); git diff > $(OBJ_DIR)/patch_id; md5sum $(OBJ_DIR)/patch_id | awk '{print $$1}')
 
-INC_DIR      := include $(GENERATED_DIR)
+INC_DIR      := include include/core include/peri include/user $(GENERATED_DIR)
 INCLUDES     := $(addprefix -I, $(INC_DIR))
 
 H_FILES      := $(foreach dir, $(INC_DIR), $(wildcard $(dir)/*.h))
@@ -53,8 +53,15 @@ S_OBJS       := $(patsubst %.S, %.o, $(S_FILES))
 LD_OBJS      := $(patsubst %.ld.S, %.ld, $(LD_FILES))
 OBJ_FILES    := $(C_OBJS) $(S_OBJS)
 
+OPENOCDTARGET=./tools/toolchain/OpenOCD/bin/wch-riscv.cfg
+OPENOCDPATH=./tools/toolchain//OpenOCD/bin/openocd
+
+TYPE_BURN  := rvopenocd_swd_burn
+TYPE_ERASE := rvopenocd_swd_erase
+TYPE_RESET := rvopenocd_swd_reset
+
 ###############################################################################################
-.phony: all compile menuconfig help clean
+.phony: all compile menuconfig help clean burn erase reset
 
 all:  compile $(OBJ_FILES) $(LD_OBJS)
 	@echo Linking $@
@@ -75,6 +82,17 @@ compile:
 	@echo "#define CH32V203_MINI_LD_FILE     \"$(CONFIG_LINK_FILE)\"" >> $(GENERATED_DIR)/compile.h
 	@echo "" >> $(GENERATED_DIR)/compile.h
 	@echo "#endif // COMPILE_H_" >> $(GENERATED_DIR)/compile.h
+
+burn:  $(TYPE_BURN)
+erase: $(TYPE_ERASE)
+reset: $(TYPE_RESET)
+
+rvopenocd_swd_burn: $(OBJ_DIR)/$(NAME).bin
+	$(OPENOCDPATH) -f $(OPENOCDTARGET) -c init -c halt -c "flash erase_sector wch_riscv 0 last" -c "program $(OBJ_DIR)/$(NAME).bin" -c "verify_image $(OBJ_DIR)/$(NAME).bin" -c exit
+rvopenocd_swd_erase:
+	$(OPENOCDPATH) -f $(OPENOCDTARGET) -c init -c halt -c "flash erase_sector wch_riscv 0 last " -c exit
+rvopenocd_swd_reset:
+	$(OPENOCDPATH) -f $(OPENOCDTARGET) -c init -c halt -c wlink_reset_resume -c exit
 
 %defconfig: compile
 	@echo make config: $@
@@ -105,6 +123,9 @@ help:
 	@echo '  xxx_defconfig   - Create autoconf.h .config according to Kconfig'
 	@echo '  menuconfig      - Configuration interface based on text menu'
 	@echo '  clean           - Clear compilation intermediate files'
+	@echo '  burn            - OpenOCD swd download files'
+	@echo '  erase           - OpenOCD swd erase flash'
+	@echo '  reset           - OpenOCD swd reset chip'
 	@echo '  git-hoolk       - Generate local hook and msg template'
 	@echo 'Execute "make" or "make all" to build all targets marked with [*] '
 	@echo 'For further info see the README.md file'
@@ -115,5 +136,5 @@ clean:
 
 git-hook:
 	@echo Generate local hook...
-	tools/githook/git-set-up.sh
+	@tools/githook/git_msg_set.sh
 	@echo done

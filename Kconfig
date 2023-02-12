@@ -33,3 +33,9 @@ menu "Compile Information"
                         Specifies the output image name
 
 endmenu	# Compile Info
+
+# core Info
+source "core/Kconfig"
+
+# peripheral Info
+source "peri/Kconfig"

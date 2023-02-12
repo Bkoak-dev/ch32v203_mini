@@ -44,6 +44,24 @@ mk_clean()
         make clean
 }
 
+rv_openocd_burn()
+{
+        echo "make burn"
+        make burn
+}
+
+rv_openocd_erase()
+{
+        echo "make erase"
+        make erase
+}
+
+rv_openocd_reset()
+{
+        echo "make reset"
+        make reset
+}
+
 helper()
 {
         echo "---------------------------------------------------------------------"
@@ -57,6 +75,9 @@ helper()
 	echo "       supports:"
 	echo "         v3: ch32v203_mini_defconfig"
         echo "    -c: make clean command"
+        echo "    -d: OpenOCD swd download bin"
+        echo "    -e: OpenOCD swd erase flash"
+        echo "    -r: OpenOCD swd reset chip"
         echo "    -h: helper prompt"
         echo "---------------------------------------------------------------------"
 }
@@ -64,7 +85,7 @@ helper()
 ###############################################################################
 # main logic from here
 ###############################################################################
-while getopts "mpcdolgah" opt; do
+while getopts "mpcderh" opt; do
         case $opt in
                 m)
                         if [ -n "$arch" ]
@@ -88,6 +109,18 @@ while getopts "mpcdolgah" opt; do
                         ;;
                 c)
                         mk_clean
+                        exit
+                        ;;
+                d)
+                        rv_openocd_burn
+                        exit
+                        ;;
+                e)
+                        rv_openocd_erase
+                        exit
+                        ;;
+                r)
+                        rv_openocd_reset
                         exit
                         ;;
                 h)
