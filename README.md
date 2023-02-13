@@ -14,7 +14,7 @@
 1. Download [Toolchain and debug tools](http://www.mounriver.com/download). The compilation toolchain and OpenOCD tools are downloaded from **_MounRiver Studio_**.
 2. Run [tools/toolchain/toolchain_cfg.sh](./tools/toolchain/toolchain_cfg.sh)
 3. If you submit code for the first time, run [tools/githook/git_msg_set.sh](./tools/githook/git_msg_set.sh). Otherwise, skip this step.
-4. Run [./build.sh -m mini](./build.sh), create default congfig file.
+4. Run [./build.sh -p mini](./build.sh), create default congfig file.
 5. Run [./build.sh](./build.sh), complete compilation.
 
 ## **OpenOCD Debug & Download program**
