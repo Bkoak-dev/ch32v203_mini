@@ -24,11 +24,11 @@ mk_cfg()
                 exit
         fi
         make $cfg
+        make menuconfig
 }
 
 mk_menucfg()
 {
-        mk_cfg
         make menuconfig
 }
 
@@ -68,12 +68,10 @@ helper()
         echo "Usage:  "
         echo "  sh build.sh [option]"
         echo "    option:"
-        echo "    -m [arch]: make menuconfig by specified defconfig"
-        echo "	     supports:"
-        echo "         v3: ch32v203_mini_defconfig"
+        echo "    -m : make menuconfig"
         echo "    -p [arch]: make specified defconfig"
-	echo "       supports:"
-	echo "         v3: ch32v203_mini_defconfig"
+        echo "       supports:"
+        echo "         mini: ch32v203_mini_defconfig"
         echo "    -c: make clean command"
         echo "    -d: OpenOCD swd download bin"
         echo "    -e: OpenOCD swd erase flash"
@@ -88,13 +86,7 @@ helper()
 while getopts "mpcderh" opt; do
         case $opt in
                 m)
-                        if [ -n "$arch" ]
-                        then
-                                mk_menucfg
-                        else
-                                echo "ERROR: No specific deconfig found! Please enter which arch you want to make."
-                                exit
-                        fi
+                        mk_menucfg
                         exit
                         ;;
                 p)
